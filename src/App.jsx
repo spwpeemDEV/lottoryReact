@@ -91,6 +91,15 @@ function App() {
     }
   };
 
+  const handleClearRandomNumber = () => {
+    localStorage.removeItem("randomNumber");
+    localStorage.removeItem("randomNumbers");
+    localStorage.removeItem("randomTwoDigitNumber");
+    setRandomNumber("");
+    setRandomNumbers([]);
+    setRandomTwoDigitNumber("");
+  };
+
   return (
     <>
       <Head />
@@ -102,15 +111,24 @@ function App() {
                 ผลการออกรางวัลล็อตเตอรี่
               </h1>
             </div>
+            <div>
             <button
               onClick={generateRandomNumber}
               className="bg-opacity-25 bg-white border-2 border-black text-black font-bold py-2 px-4 rounded-full"
             >
               ดำเนินการสุ่มรางวัล
             </button>
+            <button
+              className="bg-opacity-25 bg-white border-2 border-black text-black font-bold py-2 px-4 ml-3 rounded-full"
+              onClick={handleClearRandomNumber}
+            >
+              ล้างค่าสุ่มรางวัล
+            </button>
+            </div>
+            
           </div>
           <div>
-            <table className="table-auto w-full mt-3">
+            <table className="table-fixed w-full mt-3">
               <tbody>
                 <tr>
                   <td className="text-center py-2 px-2 border border-black font-bold">
@@ -155,6 +173,7 @@ function App() {
                 </tr>
               </tbody>
             </table>
+            
           </div>
           <div className="mt-3 border border-black">
             <div className="text-xl bg-cyan-400 text-white p-3">
